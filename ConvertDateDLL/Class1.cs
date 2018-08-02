@@ -50,6 +50,41 @@ namespace ConvertDateDLL
 
             return date;
         }
-                
+
+        public string GetTodaysDateWithoutHour()
+        {
+
+            string date = DateTime.Today.ToString();
+            string day = "";
+            string month = "";
+
+            DateTime dateTimeValue;
+
+            try
+            {
+                dateTimeValue = Convert.ToDateTime(date);
+
+                //dateTimeValue = dateTimeValue.AddDays(-1);
+                day = dateTimeValue.ToString("dd");
+
+
+                month = dateTimeValue.ToString("MMM");
+                month = month.ToUpper();
+                month = month.Substring(0, 3);
+                string year = dateTimeValue.ToString("yyyy");
+
+                date = "" + day + "-" + month + "-" + year;
+
+            }
+            catch (Exception e)
+            {
+
+                date = "Formato Invalido";
+            }
+
+
+            return date;
+        }
+
     }
 }
